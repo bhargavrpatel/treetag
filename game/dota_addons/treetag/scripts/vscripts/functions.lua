@@ -7,7 +7,7 @@ function TreeTagGameMode:RemoveWearables(hero)
  	while cur ~= nil do
     cur = cur:NextMovePeer()
     if cur ~= nil and cur:GetClassname() ~= "" and cur:GetClassname() == "dota_item_wearable" then
-      print(cur:GetClassname())  -- also can use cur:GetName()
+      --print(cur:GetClassname())  -- also can use cur:GetName()
       table.insert(wearables, cur)
     end
   end
