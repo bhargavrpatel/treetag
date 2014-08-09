@@ -11,6 +11,7 @@ function Precache( context )
 			PrecacheResource( "particle_folder", "particles/folder", context )
 	]]
 	PrecacheUnitByNameSync("npc_dota_hero_furion", context)
+	PrecacheUnitByNameSync("npc_dota_hero_warlock", context)
 end
 
 -- Create the game mode when we activate

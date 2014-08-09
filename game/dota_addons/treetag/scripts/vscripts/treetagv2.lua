@@ -44,8 +44,14 @@ function TreeTagGameMode:AutoAssignPlayer(keys)
 	-- The Player ID of the joining player
 	local playerID = ply:GetPlayerID()
 
-	ply:SetTeam(DOTA_TEAM_BADGUYS)
-	local plyHero = CreateHeroForPlayer('npc_dota_hero_furion', ply)
+	-- Good guys
+	-- ply:SetTeam(DOTA_TEAM_GOODGUYS)
+	-- local plyHero = CreateHeroForPlayer('npc_dota_hero_furion', ply)
 
+
+	-- BAD guys
+	ply:SetTeam(DOTA_TEAM_BADGUYS)
+	local plyHero = CreateHeroForPlayer('npc_dota_hero_warlock', ply)
+	
 	TreeTagGameMode:RemoveWearables(plyHero)
 end
