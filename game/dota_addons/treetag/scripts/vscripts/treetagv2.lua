@@ -26,7 +26,9 @@ function TreeTagGameMode:OnThink()
 	return 1
 end
 
---[[ Hook implementation: player_connect_full ]] 
+--==================================================
+--[[  Hook implementation: player_connect_full  ]]--
+--==================================================
 function TreeTagGameMode:AutoAssignPlayer(keys)
 	print("############################################")
 	print("             player_connect_full            ")
