@@ -6,10 +6,18 @@
 	//=================================================================================================================
 	// HERO: Templar Assassin
 	//=================================================================================================================
-	"npc_dota_hero_templar_assassin_template"
+	"npc_treetag_ent"
 	{
-		"override_hero"				"npc_dota_hero_templar_assassin"			// Hero to override
-		"Ability1"					"templar_assassin_refraction_holdout"		// Ability 1
-		"VisionNighttimeRange"		"1800"										// Range of vision at night time.
+		"override_hero"				"npc_dota_hero_furion"			// Hero to override
+		"Model"                   	"models/heroes/furion/treant.mdl"   // Model
 	}
+// //=================================================================================================================
+// // HERO: Templar Assassin
+// //=================================================================================================================
+// "npc_dota_hero_templar_assassin_template"
+// {
+// 	"override_hero"				"npc_dota_hero_templar_assassin"			// Hero to override
+// 	"Ability1"					"templar_assassin_refraction_holdout"		// Ability 1
+// 	"VisionNighttimeRange"		"1800"										// Range of vision at night time.
+// }
 }
