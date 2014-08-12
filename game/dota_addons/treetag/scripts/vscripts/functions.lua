@@ -25,3 +25,7 @@ end
 --     return true
 --   end
 -- end
+
+PrecacheItemByNameAsync(string a, handle b) --[[Returns:void
+Asynchronously precaches a DOTA item by its dota_npc_items.txt name, provides a callback when it's finished.
+]]

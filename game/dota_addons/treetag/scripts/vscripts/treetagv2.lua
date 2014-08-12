@@ -1,6 +1,6 @@
 --[[ GLOBALS ]]
 THINK_TIME = 0.01
-DEBUG = false
+DEBUG = true
 
 --[[ Generate the GameMode ]]
 if TreeTagGameMode == nil then
@@ -17,8 +17,70 @@ function TreeTagGameMode:InitGameMode()
 
 	GameRules:SetHeroSelectionTime( 0.0 )
 	GameRules:SetPreGameTime( 0.0)
-	-- Hook declarations
+	
+  -- Hook declarations
 	ListenToGameEvent('player_connect_full', Dynamic_Wrap(TreeTagGameMode, 'AutoAssignPlayer'), self)
+
+
+  -- Fill server with fake clients
+  Convars:RegisterCommand('fake', function()
+    -- Check if the server ran it
+    if not Convars:GetCommandClient() or DEBUG then
+      -- Create fake Players
+      SendToServerConsole('dota_create_fake_clients')
+      
+      local fakes = {
+        "npc_dota_hero_furion",
+        "npc_dota_hero_furion",
+        "npc_dota_hero_furion",
+        "npc_dota_hero_furion",
+        "npc_dota_hero_furion",
+        "npc_dota_hero_furion",
+        "npc_dota_hero_furion",
+        "npc_dota_hero_furion",
+        "npc_dota_hero_furion",
+        "npc_dota_hero_furion",
+        "npc_dota_hero_furion"
+      }
+        
+      self:CreateTimer('assign_fakes', {
+        endTime = Time(),
+        callback = function(treetag, args)
+          local userID = 20
+          for i=0, 5 do
+            userID = userID + 1
+            -- Check if this player is a fake one
+            if PlayerResource:IsFakeClient(i) then
+              -- Grab player instance
+              local ply = PlayerResource:GetPlayer(i)
+              -- Make sure we actually found a player instance
+              if ply then
+                CreateHeroForPlayer(fakes[i], ply)
+                ply:SetTeam(DOTA_TEAM_GOODGUYS)
+                -- TreeTagGameMode:AutoAssignPlayer({
+                --   index = ply:entindex()-1,
+                --   splitscreenplayer = -1,
+                --   userid = userID
+                -- })
+              end
+            end
+          end
+          
+          local ply = Convars:GetCommandClient()
+          local plyID = ply:GetPlayerID()
+          local hero = ply:GetAssignedHero()
+          for k,v in pairs(HeroList:GetAllHeroes()) do
+            if v ~= hero then
+              --v:SetControllableByPlayer(plyID, true)
+              --local dash = CreateItem("item_reflex_dash", v, v)
+              --v:AddItem(dash)
+              --local shooter = CreateItem("item_simple_shooter", v, v)
+              --v:AddItem(shooter)
+            end
+          end
+        end})
+    end
+  end, 'Connects and assigns fake Players.', 0)
 end
 
 --==================================================
@@ -44,42 +106,34 @@ function TreeTagGameMode:AutoAssignPlayer(keys)
 	local playerID = ply:GetPlayerID()
 
 	-- Good guys
-	-- ply:SetTeam(DOTA_TEAM_GOODGUYS)
-	-- local plyHero = CreateHeroForPlayer('npc_dota_hero_furion', ply)
+	ply:SetTeam(DOTA_TEAM_GOODGUYS)
+	local plyHero = CreateHeroForPlayer('npc_dota_hero_furion', ply)
 
 
 	-- BAD guys
-	ply:SetTeam(DOTA_TEAM_BADGUYS)
-	local plyHero = CreateHeroForPlayer('npc_dota_hero_warlock', ply)
+	-- ply:SetTeam(DOTA_TEAM_BADGUYS)
+	-- local plyHero = CreateHeroForPlayer('npc_dota_hero_warlock', ply)
 	
-	TreeTagGameMode:RemoveWearables(plyHero)
+	local heroName = plyHero:GetUnitName() 
+  TreeTagGameMode:RemoveWearables(plyHero)
+
+  if heroName == "npc_dota_hero_furion" then
+    plyHero:ReduceMana(0.0)
+  end
 	
---[[
-	self:CreateTimer('assign_fakes', {
-        endTime = Time(),
-        callback = function(treetag, args)
-          print("INSIDE TIMER")
-          return Time() + 2.0
-        end
-    })
-]]
+
+  GameRules:SendCustomMessage("Welcome to <font color='#6BA6F9'>Treetag!</font>", ply:GetTeam(), playerID)
+  GameRules:SendCustomMessage("Creators: <font color='#6BF97E'>Morphined (Coder)</font>", ply:GetTeam(), playerID)
+  GameRules:SendCustomMessage("Creators: <font color='#6BF97E'>MAXGT (Coder)</font>", ply:GetTeam(), playerID)
+  GameRules:SendCustomMessage("Creators: <font color='#6BF97E'>Azarak (Mapper)</font>", ply:GetTeam(), playerID)
+  
 end
-
-
-
-
-
-
-
-
-
 
 
 
 ---------------------------------------------------------------------
 --                               BMD TIMERS BELOW
 ---------------------------------------------------------------------
-
 --[[ Main Think ]]
 function TreeTagGameMode:OnThink()
   --[[print("THINK")

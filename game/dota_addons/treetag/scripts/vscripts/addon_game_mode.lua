@@ -12,10 +12,12 @@ function Precache( context )
 	]]
 	PrecacheUnitByNameSync("npc_dota_hero_furion", context)
 	PrecacheUnitByNameSync("npc_dota_hero_warlock", context)
+	PrecacheUnitByNameSync("npc_dota_hero_doom_bringer", context)
+	PrecacheUnitByNameSync("npc_dota_hero_night_stalker", context)
 end
 
 -- Create the game mode when we activate
 function Activate()
-	GameRules.AddonTemplate = TreeTagGameMode()
-	GameRules.AddonTemplate:InitGameMode()
+    GameRules.AddonTemplate = TreeTagGameMode()
+    GameRules.AddonTemplate:InitGameMode()
 end

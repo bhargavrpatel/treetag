@@ -6,26 +6,197 @@
 	//=================================================================================================================
 	// HERO: Ent
 	//=================================================================================================================
-	"npc_treetag_ent"
+	"npc_treetag_hero_ent"
 	{
-		"override_hero"				"npc_dota_hero_furion"			// Hero to override
-		"Model"                   	"models/heroes/furion/treant.mdl"   // Model
+		////////////////
+		// Generals 
+		///////////////
+		"override_hero"								"npc_dota_hero_furion"			// Hero to override
+		"Model"                   					"models/heroes/furion/treant.mdl"   // Model
+		"Team"										"Good"
+		"NameAliases"								"ent"
+
+		/////////////////////////
+		// HP, Mana, and Regen 
+		////////////////////////
+		"StatusHealth"              				"181"
+		"StatusHealthRegen"         				"0.0" 
+		"StatusMana"                				"0"  
+		"StatusManaRegen"           				"0.0" 
+
+
+		////////////////
+		// Abilities 
+		///////////////
+		"AbilityLayout"								"6"		
+		"Ability1"									""
+		"Ability2"									""
+		"Ability3"									""
+		"Ability4"									""
+		"Ability5"									""
+		"Ability6"									""
+
+		
+		////////////////
+		// Attributes 
+		////////////////
+		"AttributePrimary"							"DOTA_ATTRIBUTE_STRENGTH"
+		"AttributeBaseStrength"						"0"
+		"AttributeBaseAgility"						"0"
+		"AttributeBaseIntelligence"					"0"
+		"AttributeStrengthGain"						"0.0"
+		"AttributeAgilityGain"						"0.0"
+		"AttributeIntelligenceGain"					"0.0"
+
+
+		////////////////
+		// Armor 
+		///////////////
+		"ArmorPhysical"								"0"
+
+
+		///////////////////////////
+		// Attack Capabilities 
+		//////////////////////////
+		"AttackCapabilities"						"DOTA_UNIT_CAP_NO_ATTACK"
+    	"AttackAcquisitionRange"  					"0" 
+    	"AttackRange"       						"0"     
+
+		///////////////////////////
+		// Movement and Vision
+		//////////////////////////
+		"MovementSpeed"								"300"
+		"MovementTurnRate"							"0.6"
+		"VisionDaytimeRange"						"1000"
+		"VisionNighttimeRange"						"1000"
 	}
+
+
 	//=================================================================================================================
-	// HERO: Pyra
+	// HERO: Blaze
 	//=================================================================================================================
-	"npc_treetag_pyra"
+	"npc_treetag_hero_blaze"
 	{
-		"override_hero"				"npc_dota_hero_warlock"			// Hero to override
-		"Model"                   	"models/heroes/warlock/warlock_demon.mdl"   // Model
+		////////////////
+		// Generals 
+		///////////////
+		"override_hero"								"npc_dota_hero_doom_bringer"			// Hero to override
+		"Model"                   					"models/heroes/warlock/warlock_demon.mdl"   // Model
+		"Team"										"Bad"
+		"NameAliases"								"blaze"
+		
+		/////////////////////////
+		// HP, Mana, and Regen 
+		////////////////////////
+		"StatusHealth"              				"10000"
+		"StatusHealthRegen"         				"0.25" 
+		"StatusMana"                				"100"  
+		"StatusManaRegen"           				"0.0" 
+
+		////////////////
+		// Abilities 
+		///////////////
+		"AbilityLayout"								"6"		
+		"Ability1"									""
+		"Ability2"									""
+		"Ability3"									""
+		"Ability4"									""
+		"Ability5"									""
+		"Ability6"									""
+
+		
+		////////////////
+		// Attributes 
+		////////////////
+		"AttributePrimary"							"DOTA_ATTRIBUTE_STRENGTH"
+		"AttributeBaseStrength"						"20"
+		"AttributeBaseAgility"						"15"
+		"AttributeBaseIntelligence"					"15"
+		"AttributeStrengthGain"						"2.5"
+		"AttributeAgilityGain"						"1.5"
+		"AttributeIntelligenceGain"					"2.0"
+
+
+		////////////////
+		// Armor 
+		///////////////
+		"ArmorPhysical"								"1"
+
+		///////////////////////////
+		// Attack Capabilities 
+		//////////////////////////
+		"AttackCapabilities"						"DOTA_UNIT_CAP_NO_ATTACK"
+
+		///////////////////////////
+		// Movement and Vision
+		//////////////////////////
+		"MovementSpeed"								"450"
+		"MovementTurnRate"							"0.6"
+		"VisionDaytimeRange"						"1200"
+		"VisionNighttimeRange"						"1800"
 	}
-// //=================================================================================================================
-// // HERO: Templar Assassin
-// //=================================================================================================================
-// "npc_dota_hero_templar_assassin_template"
-// {
-// 	"override_hero"				"npc_dota_hero_templar_assassin"			// Hero to override
-// 	"Ability1"					"templar_assassin_refraction_holdout"		// Ability 1
-// 	"VisionNighttimeRange"		"1800"										// Range of vision at night time.
-// }
+
+	//=================================================================================================================
+	// HERO: pyra
+	//=================================================================================================================
+	"npc_treetag_hero_pyra"
+	{
+		////////////////
+		// Generals 
+		///////////////
+		"override_hero"								"npc_dota_hero_night_stalker"			// Hero to override
+		"Model"                   					"models/heroes/warlock/warlock_demon.mdl"   // Model
+		"Team"										"Bad"
+		"NameAliases"								"blaze"
+		
+		/////////////////////////
+		// HP, Mana, and Regen 
+		////////////////////////
+		"StatusHealth"              				"10000"
+		"StatusHealthRegen"         				"0.25" 
+		"StatusMana"                				"100"  
+		"StatusManaRegen"           				"0.0" 
+
+		////////////////
+		// Abilities 
+		///////////////
+		"AbilityLayout"								"6"		
+		"Ability1"									""
+		"Ability2"									""
+		"Ability3"									""
+		"Ability4"									""
+		"Ability5"									""
+		"Ability6"									""
+
+		
+		////////////////
+		// Attributes 
+		////////////////
+		"AttributePrimary"							"DOTA_ATTRIBUTE_STRENGTH"
+		"AttributeBaseStrength"						"20"
+		"AttributeBaseAgility"						"15"
+		"AttributeBaseIntelligence"					"15"
+		"AttributeStrengthGain"						"2.5"
+		"AttributeAgilityGain"						"1.5"
+		"AttributeIntelligenceGain"					"2.0"
+
+
+		////////////////
+		// Armor 
+		///////////////
+		"ArmorPhysical"								"1"
+
+		///////////////////////////
+		// Attack Capabilities 
+		//////////////////////////
+		"AttackCapabilities"						"DOTA_UNIT_CAP_NO_ATTACK"
+
+		///////////////////////////
+		// Movement and Vision
+		//////////////////////////
+		"MovementSpeed"								"450"
+		"MovementTurnRate"							"0.6"
+		"VisionDaytimeRange"						"1200"
+		"VisionNighttimeRange"						"1800"
+	}
 }
