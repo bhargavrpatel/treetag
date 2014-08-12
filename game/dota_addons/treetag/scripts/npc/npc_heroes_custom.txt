@@ -19,8 +19,8 @@
 		/////////////////////////
 		// HP, Mana, and Regen 
 		////////////////////////
-		"StatusHealth"              				"181"
-		"StatusHealthRegen"         				"0.0" 
+		"StatusHealth"              				"25"
+		"StatusHealthRegen"         				"0.50" 
 		"StatusMana"                				"0"  
 		"StatusManaRegen"           				"0.0" 
 
@@ -57,18 +57,22 @@
 
 		///////////////////////////
 		// Attack Capabilities 
-		//////////////////////////
+		//////////////////////////	
 		"AttackCapabilities"						"DOTA_UNIT_CAP_NO_ATTACK"
+		"AttackDamageMin"     						"502"
+		"AttackDamageMax"     						"504"
     	"AttackAcquisitionRange"  					"0" 
-    	"AttackRange"       						"0"     
+    	"AttackRange"       						"100"     
+		"AttackRate"       							"2.0" 
+		
 
 		///////////////////////////
 		// Movement and Vision
 		//////////////////////////
-		"MovementSpeed"								"300"
+		"MovementSpeed"								"290"
 		"MovementTurnRate"							"0.6"
-		"VisionDaytimeRange"						"1000"
-		"VisionNighttimeRange"						"1000"
+		"VisionDaytimeRange"						"1200"
+		"VisionNighttimeRange"						"800"
 	}
 
 
@@ -108,32 +112,37 @@
 		////////////////
 		// Attributes 
 		////////////////
-		"AttributePrimary"							"DOTA_ATTRIBUTE_STRENGTH"
-		"AttributeBaseStrength"						"20"
-		"AttributeBaseAgility"						"15"
+		"AttributePrimary"							"DOTA_ATTRIBUTE_AGILITY"
+		"AttributeBaseStrength"						"15"
+		"AttributeBaseAgility"						"20"
 		"AttributeBaseIntelligence"					"15"
-		"AttributeStrengthGain"						"2.5"
-		"AttributeAgilityGain"						"1.5"
-		"AttributeIntelligenceGain"					"2.0"
+		"AttributeStrengthGain"						"2.0"
+		"AttributeAgilityGain"						"2.5"
+		"AttributeIntelligenceGain"					"1.5"
 
 
 		////////////////
 		// Armor 
 		///////////////
-		"ArmorPhysical"								"1"
+		"ArmorPhysical"								"5"
 
 		///////////////////////////
 		// Attack Capabilities 
 		//////////////////////////
 		"AttackCapabilities"						"DOTA_UNIT_CAP_NO_ATTACK"
+		"AttackDamageMin"     						"100"
+		"AttackDamageMax"     						"120"		
+    	"AttackAcquisitionRange"  					"50" 
+    	"AttackRange"       						"50"   
+		"AttackRate"       							"2.0" 
 
 		///////////////////////////
 		// Movement and Vision
 		//////////////////////////
 		"MovementSpeed"								"450"
 		"MovementTurnRate"							"0.6"
-		"VisionDaytimeRange"						"1200"
-		"VisionNighttimeRange"						"1800"
+		"VisionDaytimeRange"						"1800"
+		"VisionNighttimeRange"						"800"
 	}
 
 	//=================================================================================================================
@@ -172,31 +181,36 @@
 		////////////////
 		// Attributes 
 		////////////////
-		"AttributePrimary"							"DOTA_ATTRIBUTE_STRENGTH"
-		"AttributeBaseStrength"						"20"
+		"AttributePrimary"							"DOTA_ATTRIBUTE_INTELLECT"
+		"AttributeBaseStrength"						"15"
 		"AttributeBaseAgility"						"15"
-		"AttributeBaseIntelligence"					"15"
-		"AttributeStrengthGain"						"2.5"
+		"AttributeBaseIntelligence"					"20"
+		"AttributeStrengthGain"						"2.0"
 		"AttributeAgilityGain"						"1.5"
-		"AttributeIntelligenceGain"					"2.0"
+		"AttributeIntelligenceGain"					"2.5"
 
 
 		////////////////
 		// Armor 
 		///////////////
-		"ArmorPhysical"								"1"
+		"ArmorPhysical"								"5"
 
 		///////////////////////////
 		// Attack Capabilities 
 		//////////////////////////
 		"AttackCapabilities"						"DOTA_UNIT_CAP_NO_ATTACK"
+		"AttackDamageMin"     						"110"
+		"AttackDamageMax"     						"130"		
+    	"AttackAcquisitionRange"  					"50" 
+    	"AttackRange"       						"50"   
+		"AttackRate"       							"2.0" 		
 
 		///////////////////////////
 		// Movement and Vision
 		//////////////////////////
 		"MovementSpeed"								"450"
 		"MovementTurnRate"							"0.6"
-		"VisionDaytimeRange"						"1200"
-		"VisionNighttimeRange"						"1800"
+		"VisionDaytimeRange"						"1800"
+		"VisionNighttimeRange"						"800"
 	}
 }
