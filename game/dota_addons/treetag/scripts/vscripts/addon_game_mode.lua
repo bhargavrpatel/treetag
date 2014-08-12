@@ -1,6 +1,7 @@
 require('util')
 require('treetagv2')
 require('functions')
+require('hooks')
 
 function Precache( context )
 	--[[
