@@ -58,7 +58,6 @@
 		///////////////////////////
 		// Attack Capabilities 
 		//////////////////////////	
-		"AttackCapabilities"						"DOTA_UNIT_CAP_NO_ATTACK"
 		"AttackDamageMin"     						"502"
 		"AttackDamageMax"     						"504"
     	"AttackAcquisitionRange"  					"0" 
@@ -129,7 +128,6 @@
 		///////////////////////////
 		// Attack Capabilities 
 		//////////////////////////
-		"AttackCapabilities"						"DOTA_UNIT_CAP_NO_ATTACK"
 		"AttackDamageMin"     						"100"
 		"AttackDamageMax"     						"120"		
     	"AttackAcquisitionRange"  					"50" 
@@ -198,7 +196,6 @@
 		///////////////////////////
 		// Attack Capabilities 
 		//////////////////////////
-		"AttackCapabilities"						"DOTA_UNIT_CAP_NO_ATTACK"
 		"AttackDamageMin"     						"110"
 		"AttackDamageMax"     						"130"		
     	"AttackAcquisitionRange"  					"50" 
