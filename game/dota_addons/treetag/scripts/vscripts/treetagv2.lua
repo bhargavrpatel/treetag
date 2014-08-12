@@ -1,13 +1,64 @@
---[[ GLOBALS ]]
+--===================================================
+--[[                   GLOBALS                   ]]--
+--===================================================
 THINK_TIME = 0.01
 DEBUG = true
+PAUSED = false
 
---[[ Generate the GameMode ]]
+-- Economy related
+STARTING_GOLD = 20
+STARTING_LUMBER = 40
+GOLD_PER_TICK = 1
+LUMBER_PER_TICK = 2
+
+playerArray = {}
+INNATE_ABILITIES = {}
+
+--===================================================
+--[[                GEN. GAMEMODE                ]]--
+--===================================================
 if TreeTagGameMode == nil then
 	TreeTagGameMode = class({})
+
+  -- Custom class to store player related information.
+  PlayerClass = {}
+  PlayerClass.__index = PlayerClass
 end
 
---[[ Called from Active() ]]
+
+--[[ Custom Class definition]]
+function PlayerClass.create(pid)
+  local ply = {}
+  setmetatable(ply, PlayerClass)
+
+  ply.pid = pid
+  ply.player = nil
+  ply.hero = nil
+  ply.heroName = nil
+  ply.score = 0
+  ply.gold = STARTING_GOLD
+  ply.lumber = STARTING_LUMBER
+  ply.gold_inc = GOLD_PER_TICK
+  ply.lumber_inc = LUMBER_PER_TICK
+
+  ply.foodUsed = 0
+  ply.foodTotal = 0
+
+  ply.firstTime = true  -- flag var
+  ply.isAlive = false
+  ply.teamNum = 0
+
+  ply.followerunit = nil
+
+  print("Finished Player class instance")
+
+  return ply
+end
+
+
+--===================================================
+--[[                INIT GameMode                ]]--
+--===================================================
 function TreeTagGameMode:InitGameMode()
 	TreeTagGameMode = self
 	print( "Template addon is loaded." )
@@ -20,6 +71,8 @@ function TreeTagGameMode:InitGameMode()
 	
   -- Hook declarations
 	ListenToGameEvent('player_connect_full', Dynamic_Wrap(TreeTagGameMode, 'AutoAssignPlayer'), self)
+  ListenToGameEvent('npc_spawned', Dynamic_Wrap(TreeTagGameMode, 'NPCSpawned'), self)
+
 
 
   -- Fill server with fake clients
@@ -129,7 +182,56 @@ function TreeTagGameMode:AutoAssignPlayer(keys)
   
 end
 
+--==========================================
+--[[  Hook implementation: npc_spawned  ]]--
+--==========================================
+function TreeTagGameMode:NPCSpawned(keys)
+  if DEBUG then
+    print("####################################")
+    print("             npc_spawned            ")
+    print("####################################")
+    PrintTable(keys)
+    print("####################################")
+  end
 
+  local spawnedUnit = EntIndexToHScript(keys.entindex)    -- Hscript
+  local PID = spawnedUnit:GetPlayerOwnerID()   -- PID
+
+  if PID ~= -1 and spawnedUnit:IsHero() then
+    if DEBUG then
+      print(tostring(spawnedUnit:GetUnitName()) .. "\'s PID isn\'t -1")
+    end
+
+    -- If playerArray instance is null, create a new player instance
+    if playerArray[PID] == null then
+      playerArray[PID] = PlayerClass.create(PID)
+    end
+
+    -- Player instance was newly added to the array, disable the flag and set initial values
+    if playerArray[PID].firstTime then
+      playerArray[PID].firstTime = false
+      playerArray[PID].hero = spawnedUnit
+      playerArray[PID].heroName = spawnedUnit:GetUnitName()
+      playerArray[PID].teamNum = spawnedUnit:GetTeamNumber()
+
+
+      -- Set starting gold
+      spawnedUnit:SetGold(0, true)
+      spawnedUnit:SetGold(0, false)
+      spawnedUnit:SetGold(STARTING_GOLD, true)
+
+      -- Pre-level all innate abilities
+      TreeTagGameMode:PreLevelInnateAbilities(spawnedUnit, INNATE_ABILITIES)
+    end
+    
+    -- Change death status to alive and fire an event
+    playerArray[PID].isAlive = true -- FireGameEvent("", {}})   Add this in later
+  else
+    if DEBUG then
+      print(tostring(spawnedUnit:GetUnitName()) .. "\'s PID isn\'t -1")
+    end
+  end
+end
 
 ---------------------------------------------------------------------
 --                               BMD TIMERS BELOW

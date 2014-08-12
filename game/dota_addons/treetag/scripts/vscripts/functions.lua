@@ -1,4 +1,6 @@
---[[ removes all wearables of a given player ]]
+--====================================================
+--[[               REMOVE COSMETICS               ]]--
+--====================================================
 function TreeTagGameMode:RemoveWearables(hero) 
 	local wearables = {}
 
@@ -18,14 +20,16 @@ function TreeTagGameMode:RemoveWearables(hero)
 	end
 end
 
--- function TreeTagGameMode:FurionItemBool(str)
---   if str == "attribute_bonus" or str == "furion_wrath_of_nature" or str == "furion_force_of_nature" or str == "furion_teleportation" or str == "furion_sprout" then
---     return false
---   else
---     return true
---   end
--- end
 
-PrecacheItemByNameAsync(string a, handle b) --[[Returns:void
-Asynchronously precaches a DOTA item by its dota_npc_items.txt name, provides a callback when it's finished.
-]]
+
+--=====================================================
+--[[           PRELEVEL INNATE ABILITIES           ]]--
+--=====================================================
+function TreeTagGameMode:PreLevelInnateAbilities(unit, innateAbilitiesArr) 
+  for i, ability in ipairs(innateAbilitiesArr) do
+    if unit:HasAbility(ability) then
+      local a = unit:FindAbilityByName(ability)
+      a:SetLevel(1)
+    end
+  end
+end
