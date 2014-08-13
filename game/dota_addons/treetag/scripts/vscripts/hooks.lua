@@ -39,7 +39,7 @@ function TreeTagGameMode:AutoAssignPlayer(keys)
 
   GameRules:SendCustomMessage("Welcome to <font color='#6BA6F9'>Treetag!</font>", ply:GetTeam(), playerID)
   GameRules:SendCustomMessage("Creators: <font color='#6BF97E'>Morphined (Coder)</font>", ply:GetTeam(), playerID)
-  GameRules:SendCustomMessage("Creators: <font color='#6BF97E'>MAXGT (Coder)</font>", ply:GetTeam(), playerID)
+  GameRules:SendCustomMessage("Creators: <font color='#6BF97E'>MaskGT (Coder)</font>", ply:GetTeam(), playerID)
   GameRules:SendCustomMessage("Creators: <font color='#6BF97E'>Azarak (Mapper)</font>", ply:GetTeam(), playerID)
   
 end
