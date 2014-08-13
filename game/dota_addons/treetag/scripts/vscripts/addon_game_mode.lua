@@ -23,6 +23,15 @@ function Precache( context )
 			PrecacheModel("models/heroes/treant_protector/foliage.vmdl", context)
 				PrecacheModel("models/heroes/treant_protector/hands.vmdl", context)
 					PrecacheModel("models/heroes/treant_protector/legs.vmdl", context)
+					
+	-- Precache Building models
+	PrecacheModel("models/props_structures/good_statue008.vmdl", context)
+	PrecacheModel("models/props_structures/tower_good.vmdl", context)
+	PrecacheModel("models/props_structures/good_barracks_melee001.vmdl", context)
+	PrecacheModel("models/props_structures/good_barracks_melee002.vmdl", context)	
+	
+	
+	
 end
 
 -- Create the game mode when we activate

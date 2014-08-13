@@ -79,8 +79,8 @@ function TreeTagGameMode:InitGameMode()
     
     if x < 1 then
       x = 1
-    elseif x > 5 then
-      x = 5
+    elseif x > 9 then
+      x = 9
     end
 
     if DEBUG then  
@@ -90,7 +90,16 @@ function TreeTagGameMode:InitGameMode()
         local randVec = RandomVector(20.0)
         local plyCoords = ply:GetAbsOrigin()
 
-        local unitArray = {"npc_treetag_building_basic_tree", "npc_treetag_building_armored_tree", "npc_treetag_building_strong_tree", "npc_treetag_building_big_tree", "npc_treetag_building_giant_tree"}
+        local unitArray = {"npc_treetag_building_basic_tree", 
+							"npc_treetag_building_armored_tree", 
+							"npc_treetag_building_strong_tree", 
+							"npc_treetag_building_big_tree", 
+							"npc_treetag_building_giant_tree",
+							"npc_treetag_building_resource_storage",
+							"npc_treetag_building_sentry_tower",
+							"npc_treetag_building_tree_barracks",
+							"npc_treetag_building_tree_barracks_v2"
+							}
 
         print("Creating: " .. unitArray[x]) 
 
