@@ -73,7 +73,33 @@ function TreeTagGameMode:InitGameMode()
 	ListenToGameEvent('player_connect_full', Dynamic_Wrap(TreeTagGameMode, 'AutoAssignPlayer'), self)
   ListenToGameEvent('npc_spawned', Dynamic_Wrap(TreeTagGameMode, 'NPCSpawned'), self)
 
+  -- Fill server with fake clients
+  Convars:RegisterCommand('basic_tree', function(name, unitArrayIndex)
+    local x = tonumber(unitArrayIndex)
+    
+    if x < 1 then
+      x = 1
+    elseif x > 5 then
+      x = 5
+    end
 
+    if DEBUG then  
+      ply = Convars:GetCommandClient()
+      -- Check if the server ran it
+      if ply then
+        local randVec = RandomVector(20.0)
+        local plyCoords = ply:GetAbsOrigin()
+
+        local unitArray = {"npc_treetag_building_basic_tree", "npc_treetag_building_armored_tree", "npc_treetag_building_strong_tree", "npc_treetag_building_big_tree", "npc_treetag_building_giant_tree"}
+
+        print("Creating: " .. unitArray[x]) 
+
+        local unit = CreateUnitByName(unitArray[x], plyCoords+randVec, true, nil, nil, ply:GetTeam())
+        unit:SetOwner(ply)
+        unit:SetControllableByPlayer(ply:GetPlayerID(), true)
+      end
+    end
+  end, 'Createss a unit', 0)
 
   -- Fill server with fake clients
   Convars:RegisterCommand('fake', function()
@@ -134,6 +160,8 @@ function TreeTagGameMode:InitGameMode()
         end})
     end
   end, 'Connects and assigns fake Players.', 0)
+
+
 end
 
 
