@@ -64,7 +64,6 @@ function TreeTagGameMode:InitGameMode()
 	print( "Template addon is loaded." )
 	GameRules:GetGameModeEntity():SetThink( "OnThink", self, "GlobalThink", 2 )
 
-	self.timers = {}
 
 	GameRules:SetHeroSelectionTime( 0.0 )
 	GameRules:SetPreGameTime( 0.0)
