@@ -1,4 +1,5 @@
 require('util')
+require('timers')
 require('treetagv2')
 require('functions')
 require('hooks')

@@ -62,7 +62,7 @@ end
 function TreeTagGameMode:InitGameMode()
 	TreeTagGameMode = self
 	print( "Template addon is loaded." )
-	GameRules:GetGameModeEntity():SetThink( "OnThink", self, "GlobalThink", 2 )
+	-- GameRules:GetGameModeEntity():SetThink( "OnThink", self, "GlobalThink", 2 )
 
 
 	GameRules:SetHeroSelectionTime( 0.0 )
@@ -102,6 +102,12 @@ function TreeTagGameMode:InitGameMode()
 
         print("Creating: " .. unitArray[x]) 
 
+        Timers:CreateTimer(5, function()
+            print ("Hello. I'm running 5 seconds after you called me and then every second thereafter.")
+            return 1.0
+          end
+        )
+
         local unit = CreateUnitByName(unitArray[x], plyCoords+randVec, true, nil, nil, ply:GetTeam())
         unit:SetOwner(ply)
         unit:SetControllableByPlayer(ply:GetPlayerID(), true)
@@ -130,7 +136,8 @@ function TreeTagGameMode:InitGameMode()
         "npc_dota_hero_furion"
       }
         
-      self:CreateTimer('assign_fakes', {
+      Timers:CreateTimer('assign_fakes', {
+        useGameTime = false,
         endTime = Time(),
         callback = function(treetag, args)
           local userID = 20
