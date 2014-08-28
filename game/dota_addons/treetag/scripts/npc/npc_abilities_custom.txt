@@ -46,4 +46,129 @@
 			}
 		}
 	}
+
+	//=================================================================================================================
+	// Ent Ability: Blink
+	//=================================================================================================================
+	"treetag_ent_blink"
+	{
+		"BaseClass" "antimage_blink"
+		"MaxLevel"                "1"
+		
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_POINTS"
+
+		// Casting
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCastPoint"        "0.4 0.4 0.4 0.4"
+
+		// Time   
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"       "30.0 30.0 30.0 30.0"
+		
+		// Cost
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityManaCost"       "0 0 0 0"
+		
+		// Special  
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+		  "01"
+		  {
+			"var_type"        "FIELD_INTEGER"
+			"blink_range"     "1000 1000 1000 1000"
+		  }
+		  
+		  "02"
+		  {
+			"var_type"        "FIELD_INTEGER"
+			"min_blink_range"   "1000"
+		  }
+		}
+	}
+
+
+	//=================================================================================================================
+	// Ent: Destroy Trees (AOE)
+	//=================================================================================================================
+	"treetag_end_destroy_trees"
+	{
+		"BaseClass"             "ability_datadriven"
+
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
+		"AbilityType"           "DOTA_ABILITY_TYPE_BASIC"
+		"AbilityTextureName"    "shredder_chakram"
+		"AOERadius"             "200"
+		"MaxLevel"              "1"
+		
+		// Stats
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCastRange"        "2000"
+		"AbilityCastPoint"        "0.5 0.5 0.5 0.5"
+		"AbilityCooldown"       "0 0 0 0"
+		"AbilityManaCost"       "0 0 0 0"
+		"MaxLevel"                "1"
+		
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"OnSpellStart"
+		{
+		  "DestroyTrees"
+		  {
+			"Target"      "POINT"
+			"Radius"      "200"
+		  }
+		  "FireSound"
+		  {
+			"EffectName"  "Hero_Shredder.WhirlingDeath.Damage"
+			"Target"      "CASTER"
+		  }
+		  "RunScript"
+		  {
+			"ScriptFile"          "scripts/vscripts/runnable_scripts/trees_cut.lua"
+			"Function"            "TreesCutTest"
+			"Target"              "POINT"
+		  }
+		}
+	}
+	
+	//=================================================================================================================
+	// Ent Ability: Show build menu
+	//=================================================================================================================
+	"treetag_ent_build_menu"
+	{
+	  // General
+	  //-------------------------------------------------------------------------------------------------------------
+	  // "AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_TOGGLE | DOTA_ABILITY_BEHAVIOR_IGNORE_PSEUDO_QUEUE"
+	  "BaseClass"                 "ability_datadriven"
+	  "AbilityBehavior"           "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_TOGGLE"
+	  "AbilityTextureName"        "oracle_fates_edict"
+	  "MaxLevel"                  "1"
+
+	  "OnToggleOn"
+	  {
+		"RunScript"
+		  {
+			"ScriptFile"          "scripts/vscripts/runnable_scripts/build_menu.lua"
+			"Function"            "showBuildMenu"
+			"Target"              "CASTER"
+		  }
+	  }
+	  
+	  "OnToggleOff"
+	  {
+		"RunScript"
+		  {
+			"ScriptFile"          "scripts/vscripts/runnable_scripts/build_menu.lua"
+			"Function"            "hideBuildMenu"
+			"Target"              "CASTER"
+		  }
+	  }
+	}	
+	
+	
 }

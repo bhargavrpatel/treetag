@@ -29,11 +29,11 @@
 		// Abilities 
 		///////////////
 		"AbilityLayout"								"6"		
-		"Ability1"									""
-		"Ability2"									""
+		"Ability1"									"treetag_ent_blink"
+		"Ability2"									"treetag_end_destroy_trees"
 		"Ability3"									""
 		"Ability4"									""
-		"Ability5"									""
+		"Ability5"									"treetag_ent_build_menu"
 		"Ability6"									""
 
 		
